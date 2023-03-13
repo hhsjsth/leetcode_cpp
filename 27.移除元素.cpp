@@ -1,7 +1,7 @@
 /*
  * @lc app=leetcode.cn id=27 lang=cpp
  *
- * [27] 移除元素 方法二 优化的向中靠拢的双指针
+ * [27] 移除元素 方法三 继续优化的向中靠拢的双指针
  */
 
 // @lc code=start
@@ -9,20 +9,19 @@ class Solution {
   public:
     int removeElement(vector<int> &nums, int val) {
         int left = 0;
-        /* 采用左闭右开的思想方法, 当 left 遇到 right 的时候, 由于 right 是开的
-         * 此时 left == right, nums[left] 刚好由于是处于开的临界点因此不包含在最终结果的区间中.
-         * 但是 left 这个值刚好就能够成为元素个数
-         */
         int right = nums.size();
-        /* 以下这种方式, 遇到一个 val 值, 只需赋值一次, 比上个方法更优, 而不是遇到一个 val 就得将
-         * 右边的全部值都向左移动赋值
+        /*
+         * 为了减少赋值次数, 将赋值的 if 分支放到最后, 将移动指针的 if 分支放到前面
+         * 并且前两个分支可以交换
          */
-        /* 但是遇到 [val, val, val] 这种情况反而比方法一更耗时间, 需要赋值很多次 */
         while (left < right) {
-            if (nums[left] == val) {
+            if (nums[right - 1] == val) {
+                right--;
+            } else if (nums[left] != val) {
+                left++;
+            } else {
                 nums[left] = nums[right - 1];
                 right--;
-            } else {
                 left++;
             }
         }

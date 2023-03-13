@@ -9,23 +9,25 @@ class Solution {
   public:
     int removeElement(vector<int> &nums, int val) {
         int left = 0;
-        int right = nums.size() - 1;
+        /* 采用左闭右开的思想方法, 当 left 遇到 right 的时候, 由于 right 是开的
+         * 此时 left == right, nums[left] 刚好由于是处于开的临界点因此不包含在最终结果的区间中.
+         * 但是 left 这个值刚好就能够成为元素个数
+         */
+        int right = nums.size();
         /* 以下这种方式, 遇到一个 val 值, 只需赋值一次, 比上个方法更优, 而不是遇到一个 val 就得将
          * 右边的全部值都向左移动赋值
          */
         /* 但是遇到 [val, val, val] 这种情况反而比方法一更耗时间, 需要赋值很多次 */
         while (left < right) {
             if (nums[left] == val) {
-                nums[left] = nums[right--];
+                nums[left] = nums[right - 1];
+                right--;
             } else {
                 left++;
             }
         }
-        return left + 1;
-        /* 然而以上这种方法是错误的, 因为如果 nums 的长度为 0, 则应该返回 -1
-         * 但是此时 left + 1 为 1, 已经超过数组长度, 因此错误
-         * 错误解决需要使用左开右闭的思想和方法, 见下一个提交
-         */
+        /* 根据以上说到的左闭右开, 返回 left 即可 */
+        return left;
     }
 };
 // @lc code=end

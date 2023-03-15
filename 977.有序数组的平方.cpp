@@ -8,16 +8,17 @@
 class Solution {
   public:
     vector<int> sortedSquares(vector<int> &nums) {
-        // 还是左闭右开
+        // 还是左闭右闭
         int l = 0, r = nums.size();
         vector<int> res(r);
         int pos = r - 1;
-        while (l < r) {
-            if (nums[l] * nums[l] > nums[r - 1] * nums[r - 1]) {
+        r = r - 1;
+        while (l <= r) {
+            if (nums[l] * nums[l] > nums[r] * nums[r]) {
                 res[pos--] = nums[l] * nums[l];
                 l++;
             } else {
-                res[pos--] = nums[r - 1] * nums[r - 1];
+                res[pos--] = nums[r] * nums[r];
                 r--;
             }
         }

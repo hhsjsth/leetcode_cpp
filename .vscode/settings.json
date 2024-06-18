@@ -1,4 +1,6 @@
 {
-    "C_Cpp.errorSquiggles": "Disabled",
-    "C_Cpp.intelliSenseEngine": "Default"
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "code-runner.executorMap": {
+        "cpp": "cd $dir && if [ $fileName -nt build/$fileNameWithoutExt ]; then g++ -std=c++14 -g -lgtest $fileName -o build/$fileNameWithoutExt; fi && ./build/$fileNameWithoutExt"
+    }
 }

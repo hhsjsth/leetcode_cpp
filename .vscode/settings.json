@@ -1,6 +1,6 @@
 {
     "C_Cpp.intelliSenseEngine": "disabled",
     "code-runner.executorMap": {
-        "cpp": "cd $dir && if [ $fileName -nt build/$fileNameWithoutExt ]; then g++ -std=c++14 -g -lgtest $fileName -o build/$fileNameWithoutExt; fi && ./build/$fileNameWithoutExt"
+        "cpp": "cd $dir && if [ ! -f build/$fileNameWithoutExt ] || [ $fileName -nt build/$fileNameWithoutExt ]; then g++ -std=c++14 -g -lgtest $fileName -o build/$fileNameWithoutExt; fi && ./build/$fileNameWithoutExt"
     }
 }

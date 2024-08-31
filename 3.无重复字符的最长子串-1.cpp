@@ -4,28 +4,29 @@
  * [3] 无重复字符的最长子串
  */
 
+// https://labuladong.online/algo/essential-technique/sliding-window-framework/#%E5%9B%9B%E3%80%81%E6%9C%80%E9%95%BF%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2
 // @lc code=start
 class Solution {
   public:
     int lengthOfLongestSubstring(string s) {
-        // 哈希集合，记录每个字符是否出现过
-        unordered_set<char> occ;
-        int n = s.size();
-        // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
-        int rk = -1, ans = 0;
-        // 枚举左指针的位置，初始值隐性地表示为 -1
-        for (int i = 0; i < n; ++i) {
-            if (i != 0) {
-                // 左指针向右移动一格，移除一个字符
-                occ.erase(s[i - 1]);
+        unordered_map<char, int> window;
+        int l = 0, r = 0;
+        int ans = 0;
+
+        while (r < s.length()) {
+            char c = s[r];
+            r++;
+
+            window[c]++;
+
+            // 存在重复字符时应该收缩窗口
+            while (window[c] > 1) {
+                char d = s[l];
+                l++;
+                window[d]--;
             }
-            while (rk + 1 < n && !occ.count(s[rk + 1])) {
-                // 不断地移动右指针
-                occ.insert(s[rk + 1]);
-                ++rk;
-            }
-            // 第 i 到 rk 个字符是一个极长的无重复字符子串
-            ans = max(ans, rk - i + 1);
+
+            ans = max(ans, r - l);
         }
         return ans;
     }

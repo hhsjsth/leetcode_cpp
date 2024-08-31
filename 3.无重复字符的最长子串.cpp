@@ -9,6 +9,7 @@ class Solution {
   public:
     int lengthOfLongestSubstring(string s) {
         // 哈希集合，记录每个字符是否出现过
+        // 根据通义千问, occ 这个名字可能是从 "occurrence"（出现）这个词简化而来
         unordered_set<char> occ;
         int n = s.size();
         // 右指针，初始值为 0，左闭右开，还没有开始移动

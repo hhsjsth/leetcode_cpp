@@ -16,7 +16,12 @@ class Solution {
         unordered_map<int, int> u;
 
         for (int j = n2 - 1; j >= 0; j--) {
-            while (!s.empty() && nums2[j] > s.top()) {
+
+            // 需理解
+            // 由于题目说到 "nums1 和 nums2 中所有整数 互不相同"
+            // 因此使用 >= 或者 > 都行
+            // 具体见 739.每日温度.cpp 解释
+            while (!s.empty() && nums2[j] >= s.top()) {
                 s.pop();
             }
 

@@ -43,7 +43,12 @@ class Solution {
             columns.insert(i);
             diagonals1.insert(diagonal1);
             diagonals2.insert(diagonal2);
+
+            // 需理解
+            // 上面 i 是按列遍历
+            // row + 1 说明继续深入按行数遍历
             backtrace(solutions, queens, columns, diagonals1, diagonals2, n, row + 1);
+
             queens[row] = -1;
             columns.erase(i);
             diagonals1.erase(diagonal1);

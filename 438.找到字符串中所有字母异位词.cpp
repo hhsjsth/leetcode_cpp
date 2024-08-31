@@ -29,6 +29,7 @@ class Solution {
                 }
             }
 
+            // 需理解
             // 收缩窗口
             while (r - l == p.length()) {
                 if (valid == need.size()) {

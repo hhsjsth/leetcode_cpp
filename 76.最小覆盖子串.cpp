@@ -36,6 +36,7 @@ class Solution {
             if (need.count(c)) {
                 window[c]++;
 
+                // 需理解
                 // 当窗口内的该字符数量刚好等于 need 的数量时, valid 才会加一
                 // 如果超过了, 则不计数, 因此判断条件是 window[c] == need[c]
                 if (window[c] == need[c]) {
@@ -57,6 +58,7 @@ class Solution {
                 l++;
 
                 if (need.count(c)) {
+                    // 易错, 需要先 valid--, 再 window[c]--
                     if (window[c] == need[c]) {
                         valid--;
                     }

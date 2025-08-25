@@ -1,3 +1,5 @@
+#include "header.h"
+
 /*
  * @lc app=leetcode.cn id=76 lang=cpp
  *

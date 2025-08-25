@@ -1,3 +1,5 @@
+#include "header.h"
+
 /*
  * @lc app=leetcode.cn id=1 lang=cpp
  *
@@ -6,9 +8,8 @@
 
 // @lc code=start
 class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        
+  public:
+    vector<int> twoSum(vector<int> &nums, int target) {
     }
 };
 // @lc code=end
